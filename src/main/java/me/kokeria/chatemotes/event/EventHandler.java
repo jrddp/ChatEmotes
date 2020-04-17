@@ -10,14 +10,16 @@ import java.util.HashMap;
 public class EventHandler {
 
     protected static boolean runReplacement(GuiChat chat) {
+
         GuiTextField field = chat.inputField;
         String msg = field.getText();
         int cursor = field.getCursorPosition();
         String word = ChatHelper.getWord(msg, cursor);
         boolean isValid = word.length() > 2 && word.charAt(0) == ':' && word.charAt(word.length()-1) == ':';
         if (!isValid) return false;
-        String key = word.substring(1, word.length()-2);
+        String key = word.substring(1, word.length()-1);
         HashMap<String, String> keyset = FileHandler.getKEYSET();
+        System.out.println(key);
         if (!keyset.containsKey(key)) return false;
         ChatHelper.replaceWord(field, keyset.get(key));
         return true;
