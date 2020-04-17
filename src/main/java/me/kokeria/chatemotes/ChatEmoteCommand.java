@@ -55,6 +55,7 @@ public class ChatEmoteCommand extends CommandBase {
                 break;
             case "reload":
                 FileHandler.setKeyset();
+                addMsgToChat(EnumChatFormatting.GREEN + "ChatEmotes reloaded from config file");
                 break;
         }
 
@@ -68,7 +69,7 @@ public class ChatEmoteCommand extends CommandBase {
 
         while (iterator.hasNext()) {
             String key = iterator.next();
-            stringBuilder.append(EnumChatFormatting.GOLD).append(key).append(':').append(key).append(':');
+            stringBuilder.append(EnumChatFormatting.GOLD).append(':').append(key).append(':');
             stringBuilder.append(EnumChatFormatting.WHITE).append(" - ");
             stringBuilder.append(EnumChatFormatting.YELLOW).append(keyset.get(key));
             if (iterator.hasNext()) stringBuilder.append('\n');
@@ -78,8 +79,11 @@ public class ChatEmoteCommand extends CommandBase {
         if (msg.isEmpty()) msg = EnumChatFormatting.RED + "You have no emotes registered!";
         else msg = EnumChatFormatting.GREEN + "The following emotes are available:\n" + msg;
 
-        Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText(msg));
+        addMsgToChat(msg);
+    }
 
+    private void addMsgToChat(String msg) {
+        Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText(msg));
     }
 
 }
