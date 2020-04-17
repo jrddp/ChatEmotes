@@ -49,7 +49,7 @@ public class FileHandler {
                     if (!line.contains(":")) continue;
                     int splitIndex = line.indexOf(':');
                     String key = line.substring(0, splitIndex);
-                    String repl = line.substring(splitIndex);
+                    String repl = line.substring(splitIndex + 1);
                     KEYSET.put(key, repl);
                 }
                 reader.close();
