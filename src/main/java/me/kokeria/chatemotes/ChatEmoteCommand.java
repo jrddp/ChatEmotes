@@ -39,7 +39,7 @@ public class ChatEmoteCommand extends CommandBase {
     @Override
     public void processCommand(ICommandSender sender, String[] args) throws CommandException {
 
-        FileHandler.setKeyset();
+        FileHandler.setEmotesFromFile();
         sendListToChat();
 
     }
@@ -47,25 +47,14 @@ public class ChatEmoteCommand extends CommandBase {
     private void sendListToChat() {
 
         StringBuilder stringBuilder = new StringBuilder();
-        HashMap<String, String> keyset = FileHandler.getRawKeyset();
-        Iterator<String> iterator = keyset.keySet().iterator();
+        HashMap<String, String> emotes = FileHandler.getEMOTES();
+        Iterator<String> iterator = emotes.keySet().iterator();
 
         while (iterator.hasNext()) {
             String key = iterator.next();
             stringBuilder.append(EnumChatFormatting.GOLD).append(key);
             stringBuilder.append(EnumChatFormatting.WHITE).append(" - ");
-            stringBuilder.append(EnumChatFormatting.YELLOW).append(keyset.get(key));
-            stringBuilder.append('\n');
-        }
-
-        keyset = FileHandler.getKEYSET();
-        iterator = keyset.keySet().iterator();
-
-        while (iterator.hasNext()) {
-            String key = iterator.next();
-            stringBuilder.append(EnumChatFormatting.GOLD).append(':').append(key).append(':');
-            stringBuilder.append(EnumChatFormatting.WHITE).append(" - ");
-            stringBuilder.append(EnumChatFormatting.YELLOW).append(keyset.get(key));
+            stringBuilder.append(EnumChatFormatting.YELLOW).append(emotes.get(key));
             if (iterator.hasNext()) stringBuilder.append('\n');
         }
 

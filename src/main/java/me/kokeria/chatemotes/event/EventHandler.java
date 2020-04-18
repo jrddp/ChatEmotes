@@ -16,23 +16,14 @@ public class EventHandler {
         int cursor = field.getCursorPosition();
         String word = ChatHelper.getWord(msg, cursor);
 
-        HashMap<String, String> rawKeyset = FileHandler.getRawKeyset();
+        HashMap<String, String> emotes = FileHandler.getEMOTES();
 
-        if (rawKeyset.containsKey(word)) {
-            ChatHelper.replaceWord(field, rawKeyset.get(word));
+        if (emotes.containsKey(word)) {
+            ChatHelper.replaceWord(field, emotes.get(word));
             return true;
         }
 
-        boolean isValid = word.length() > 2 && word.charAt(0) == ':' && word.charAt(word.length()-1) == ':';
-        if (!isValid) return false;
-
-        String key = word.substring(1, word.length()-1);
-
-        HashMap<String, String> keyset = FileHandler.getKEYSET();
-        if (!keyset.containsKey(key)) return false;
-
-        ChatHelper.replaceWord(field, keyset.get(key));
-        return true;
+        return false;
     }
 
 }
