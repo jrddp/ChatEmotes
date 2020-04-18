@@ -16,6 +16,13 @@ public class EventHandler {
         int cursor = field.getCursorPosition();
         String word = ChatHelper.getWord(msg, cursor);
 
+        HashMap<String, String> rawKeyset = FileHandler.getRawKeyset();
+
+        if (rawKeyset.containsKey(word)) {
+            ChatHelper.replaceWord(field, rawKeyset.get(word));
+            return true;
+        }
+
         boolean isValid = word.length() > 2 && word.charAt(0) == ':' && word.charAt(word.length()-1) == ':';
         if (!isValid) return false;
 

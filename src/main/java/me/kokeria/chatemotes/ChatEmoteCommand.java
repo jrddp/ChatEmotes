@@ -49,7 +49,7 @@ public class ChatEmoteCommand extends CommandBase {
             return;
         }
 
-        switch (args[1]) {
+        switch (args[0]) {
             case "list":
                 sendListToChat();
                 break;
@@ -64,8 +64,19 @@ public class ChatEmoteCommand extends CommandBase {
     private void sendListToChat() {
 
         StringBuilder stringBuilder = new StringBuilder();
-        HashMap<String, String> keyset = FileHandler.getKEYSET();
+        HashMap<String, String> keyset = FileHandler.getRawKeyset();
         Iterator<String> iterator = keyset.keySet().iterator();
+
+        while (iterator.hasNext()) {
+            String key = iterator.next();
+            stringBuilder.append(EnumChatFormatting.GOLD).append(key);
+            stringBuilder.append(EnumChatFormatting.WHITE).append(" - ");
+            stringBuilder.append(EnumChatFormatting.YELLOW).append(keyset.get(key));
+            if (iterator.hasNext()) stringBuilder.append('\n');
+        }
+
+        keyset = FileHandler.getKEYSET();
+        iterator = keyset.keySet().iterator();
 
         while (iterator.hasNext()) {
             String key = iterator.next();

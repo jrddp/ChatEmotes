@@ -16,8 +16,19 @@ public class FileHandler {
     private static final HashMap<String, String> KEYSET = new HashMap<>();
 
     private static final HashMap<String, String> DEFAULT_KEYSET = new HashMap<>();
+
     static {
         DEFAULT_KEYSET.put("owo", "OwO");
+    }
+
+    private static final HashMap<String, String> RAW_KEYSET = new HashMap<>();
+
+    public static HashMap<String, String> getRawKeyset() {
+        return RAW_KEYSET;
+    }
+
+    static {
+        RAW_KEYSET.put("<3", "❤");
     }
 
     public static final void genKeyfile() {
