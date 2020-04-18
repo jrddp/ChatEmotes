@@ -5,7 +5,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 
@@ -33,31 +32,15 @@ public class ChatEmoteCommand extends CommandBase {
     }
 
     @Override
-    public List<String> addTabCompletionOptions(ICommandSender sender, String[] args, BlockPos pos) {
-        switch (args.length) {
-            case 1:
-                return getListOfStringsMatchingLastWord(args, "list", "reload");
-        }
-        return Collections.emptyList();
+    public List<String> getCommandAliases() {
+        return Collections.singletonList("emote");
     }
 
     @Override
     public void processCommand(ICommandSender sender, String[] args) throws CommandException {
 
-        if (args.length <= 0) {
-            sendListToChat();
-            return;
-        }
-
-        switch (args[0]) {
-            case "list":
-                sendListToChat();
-                break;
-            case "reload":
-                FileHandler.setKeyset();
-                addMsgToChat(EnumChatFormatting.GREEN + "ChatEmotes reloaded from config file");
-                break;
-        }
+        FileHandler.setKeyset();
+        sendListToChat();
 
     }
 
