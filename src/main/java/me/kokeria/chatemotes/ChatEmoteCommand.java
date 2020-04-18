@@ -72,7 +72,7 @@ public class ChatEmoteCommand extends CommandBase {
             stringBuilder.append(EnumChatFormatting.GOLD).append(key);
             stringBuilder.append(EnumChatFormatting.WHITE).append(" - ");
             stringBuilder.append(EnumChatFormatting.YELLOW).append(keyset.get(key));
-            if (iterator.hasNext()) stringBuilder.append('\n');
+            stringBuilder.append('\n');
         }
 
         keyset = FileHandler.getKEYSET();
