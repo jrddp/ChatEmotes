@@ -17,7 +17,6 @@ public class FileHandler {
     }
 
     private static final Map<String, String> DEFAULT_KEYSET = new LinkedHashMap<>();
-    // todo add a few more, such as :len: :run: and ":)"
     static {
         DEFAULT_KEYSET.put("<3", "❤");
         DEFAULT_KEYSET.put(":star:", "✮");
@@ -39,6 +38,12 @@ public class FileHandler {
         DEFAULT_KEYSET.put(":pvp:", "⚔");
         DEFAULT_KEYSET.put(":peace:", "✌");
 //        DEFAULT_KEYSET.put(":oof:", "OOF");
+        DEFAULT_KEYSET.put(":run:", "ᕕ(՞ᗜ՞)ᕗ");
+        DEFAULT_KEYSET.put(":bear:", "ʕ ᓀ ᴥ ᓂ ʔ");
+        DEFAULT_KEYSET.put(":flower:", "✿");
+        DEFAULT_KEYSET.put(":rly:", "ಠ_ಠ");
+        DEFAULT_KEYSET.put(":)", "◕‿◕");
+        DEFAULT_KEYSET.put(":dance:", "♪ ┗(^o^)┓ ♪");
     }
 
     public static void genDefaultKeyfile() {
@@ -70,6 +75,7 @@ public class FileHandler {
         if (KEYFILE.exists()) {
             try {
                 Scanner reader = new Scanner(KEYFILE);
+                EMOTES.clear();
                 while (reader.hasNextLine()) {
                     String line = reader.nextLine();
                     if (!line.contains(":")) continue;
