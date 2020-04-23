@@ -27,7 +27,7 @@ public class FileHandler {
         DEFAULT_KEYSET.put(":shrug:", "¯\\_(ツ)_/¯");
         DEFAULT_KEYSET.put(":tableflip:", "(╯°□°）╯︵ ┻━┻");
         DEFAULT_KEYSET.put("o/", "( ﾟ◡ﾟ)/");
-        DEFAULT_KEYSET.put(":123:", "123");
+//        DEFAULT_KEYSET.put(":123:", "123");
         DEFAULT_KEYSET.put(":totem:", "☉_☉");
         DEFAULT_KEYSET.put(":typing:", "✎...");
         DEFAULT_KEYSET.put(":maths:", "√(π+x)=L");
@@ -37,10 +37,10 @@ public class FileHandler {
         DEFAULT_KEYSET.put(":wizard:", "('-')⊃━☆ﾟ.*･｡ﾟ");
         DEFAULT_KEYSET.put(":pvp:", "⚔");
         DEFAULT_KEYSET.put(":peace:", "✌");
-        DEFAULT_KEYSET.put(":oof:", "OOF");
+//        DEFAULT_KEYSET.put(":oof:", "OOF");
     }
 
-    public static final void genDefaultKeyfile() {
+    public static void genDefaultKeyfile() {
         if (!KEYFILE.exists()) {
             try {
                 BufferedWriter writer = new BufferedWriter(new FileWriter(KEYFILE));
@@ -67,9 +67,8 @@ public class FileHandler {
     public static void setEmotesFromFile() {
 
         if (KEYFILE.exists()) {
-            Scanner reader = null;
             try {
-                reader = new Scanner(KEYFILE);
+                Scanner reader = new Scanner(KEYFILE);
                 while (reader.hasNextLine()) {
                     String line = reader.nextLine();
                     if (!line.contains(":")) continue;
