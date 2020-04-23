@@ -42,7 +42,7 @@ public class ChatEmoteCommand extends CommandBase {
         sendListToChat();
 
     }
-
+// todo make listed emotes clickable
     private void sendListToChat() {
 
         StringBuilder stringBuilder = new StringBuilder();
@@ -59,7 +59,7 @@ public class ChatEmoteCommand extends CommandBase {
 
         String msg = stringBuilder.toString();
         if (msg.isEmpty()) msg = EnumChatFormatting.RED + "You have no emotes registered!";
-        else msg = EnumChatFormatting.GREEN + "The following emotes are available:\n" + msg;
+        else msg = EnumChatFormatting.GREEN + "Type an emote in chat and hit tab to replace!\n" + msg;
 
         addMsgToChat(msg);
     }
