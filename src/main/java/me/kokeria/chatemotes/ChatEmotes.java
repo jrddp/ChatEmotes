@@ -17,7 +17,6 @@ public class ChatEmotes
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
-        FileHandler.genDefaultKeyfile();
         FileHandler.setEmotesFromFile();
         MinecraftForge.EVENT_BUS.register(new EventListener());
         ClientCommandHandler.instance.registerCommand(new ChatEmoteCommand());
