@@ -1,22 +1,23 @@
 package me.kokeria.chatemotes.util;
 
 import java.io.*;
-import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class FileHandler {
 
     private static final File KEYFILE = new File("config" + File.separator + "chatemotes.txt");
 
-    private static final HashMap<String, String> EMOTES = new HashMap<>();
+    private static final Map<String, String> EMOTES = new LinkedHashMap<>();
 
-    public static HashMap<String, String> getEMOTES() {
+    public static Map<String, String> getEMOTES() {
         return EMOTES;
     }
 
-    private static final HashMap<String, String> DEFAULT_KEYSET = new HashMap<>();
-
+    private static final Map<String, String> DEFAULT_KEYSET = new LinkedHashMap<>();
+    // todo add a few more, such as :len: :run: and ":)"
     static {
         DEFAULT_KEYSET.put("<3", "❤");
         DEFAULT_KEYSET.put(":star:", "✮");
@@ -31,8 +32,8 @@ public class FileHandler {
         DEFAULT_KEYSET.put(":totem:", "☉_☉");
         DEFAULT_KEYSET.put(":typing:", "✎...");
         DEFAULT_KEYSET.put(":maths:", "√(π+x)=L");
-        DEFAULT_KEYSET.put(":snail:", "@'-'");
-        DEFAULT_KEYSET.put(":thinking:", "(0.o?)");
+//        DEFAULT_KEYSET.put(":snail:", "@'-'");
+//        DEFAULT_KEYSET.put(":thinking:", "(0.o?)");
         DEFAULT_KEYSET.put(":gimme:", "༼つ◕_◕༽つ");
         DEFAULT_KEYSET.put(":wizard:", "('-')⊃━☆ﾟ.*･｡ﾟ");
         DEFAULT_KEYSET.put(":pvp:", "⚔");
@@ -63,7 +64,7 @@ public class FileHandler {
             }
         }
     }
-
+        // todo add explanation to file
     public static void setEmotesFromFile() {
 
         if (KEYFILE.exists()) {

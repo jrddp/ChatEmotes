@@ -5,7 +5,7 @@ import me.kokeria.chatemotes.util.FileHandler;
 import net.minecraft.client.gui.GuiChat;
 import net.minecraft.client.gui.GuiTextField;
 
-import java.util.HashMap;
+import java.util.Map;
 
 public class EventHandler {
 
@@ -16,7 +16,7 @@ public class EventHandler {
         int cursor = field.getCursorPosition();
         String word = ChatHelper.getWord(msg, cursor);
 
-        HashMap<String, String> emotes = FileHandler.getEMOTES();
+        Map<String, String> emotes = FileHandler.getEMOTES();
 
         if (emotes.containsKey(word)) {
             ChatHelper.replaceWord(field, emotes.get(word));

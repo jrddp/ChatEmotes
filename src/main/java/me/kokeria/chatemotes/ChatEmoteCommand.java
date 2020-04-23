@@ -3,15 +3,14 @@ package me.kokeria.chatemotes;
 import me.kokeria.chatemotes.util.FileHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.command.CommandBase;
-import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 public class ChatEmoteCommand extends CommandBase {
 
@@ -37,7 +36,7 @@ public class ChatEmoteCommand extends CommandBase {
     }
 
     @Override
-    public void processCommand(ICommandSender sender, String[] args) throws CommandException {
+    public void processCommand(ICommandSender sender, String[] args) {
 
         FileHandler.setEmotesFromFile();
         sendListToChat();
@@ -47,7 +46,7 @@ public class ChatEmoteCommand extends CommandBase {
     private void sendListToChat() {
 
         StringBuilder stringBuilder = new StringBuilder();
-        HashMap<String, String> emotes = FileHandler.getEMOTES();
+        Map<String, String> emotes = FileHandler.getEMOTES();
         Iterator<String> iterator = emotes.keySet().iterator();
 
         while (iterator.hasNext()) {
