@@ -1,7 +1,7 @@
 package me.kokeria.chatemotes;
 
+import me.kokeria.chatemotes.util.ChatHelper;
 import me.kokeria.chatemotes.util.FileHandler;
-import net.minecraft.client.Minecraft;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.event.ClickEvent;
@@ -9,7 +9,6 @@ import net.minecraft.event.HoverEvent;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.ChatStyle;
 import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.IChatComponent;
 
 import java.util.Collections;
 import java.util.Iterator;
@@ -55,11 +54,11 @@ public class ChatEmoteCommand extends CommandBase {
         if (!iterator.hasNext()) {
             ChatStyle style = new ChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_FILE, FileHandler.KEYFILE.getAbsolutePath()));
             style.setChatHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ChatComponentText("Click to open config file")));
-            addMsgToChat(new ChatComponentText(EnumChatFormatting.RED + "You have no emotes registered!").setChatStyle(style));
+            ChatHelper.addMsgToChat(new ChatComponentText(EnumChatFormatting.RED + "You have no emotes registered!").setChatStyle(style));
             return;
         }
 
-        addMsgToChat(EnumChatFormatting.GREEN + "Type an emote in chat and hit tab to replace!");
+        ChatHelper.addMsgToChat(EnumChatFormatting.GREEN + "Type an emote in chat and hit tab to replace!");
 
         while (iterator.hasNext()) {
             String key = iterator.next();
@@ -69,17 +68,9 @@ public class ChatEmoteCommand extends CommandBase {
             ChatStyle style = new ChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, emote));
             style.setChatHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ChatComponentText("Click to set chat to " + emote)));
             component.setChatStyle(style);
-            addMsgToChat(component);
+            ChatHelper.addMsgToChat(component);
         }
 
-    }
-
-    private void addMsgToChat(String msg) {
-        Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText(msg));
-    }
-
-    private void addMsgToChat(IChatComponent msg) {
-        Minecraft.getMinecraft().thePlayer.addChatMessage(msg);
     }
 
 }

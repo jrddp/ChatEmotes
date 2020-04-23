@@ -1,6 +1,9 @@
 package me.kokeria.chatemotes.util;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiTextField;
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.IChatComponent;
 
 public class ChatHelper {
 
@@ -45,6 +48,14 @@ public class ChatHelper {
             if (input.charAt(i) == ' ') return i;
         }
         return input.length();
+    }
+
+    public static void addMsgToChat(String msg) {
+        Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText(msg));
+    }
+
+    public static void addMsgToChat(IChatComponent msg) {
+        Minecraft.getMinecraft().thePlayer.addChatMessage(msg);
     }
 
 }

@@ -12,7 +12,7 @@ public class EventListener {
 
         if (event.gui instanceof GuiChat && Keyboard.getEventKey() == Keyboard.KEY_TAB && Keyboard.getEventKeyState() && event.isCancelable()) {
 
-            if (EventHandler.runReplacement((GuiChat) event.gui)) event.setCanceled(true);
+            if (EventHandler.runReplacement((GuiChat) event.gui) || EventHandler.runAutocomplete((GuiChat) event.gui)) event.setCanceled(true);
 
         }
 

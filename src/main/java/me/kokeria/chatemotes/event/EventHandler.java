@@ -1,5 +1,6 @@
 package me.kokeria.chatemotes.event;
 
+import me.kokeria.chatemotes.util.AutoCompletion;
 import me.kokeria.chatemotes.util.ChatHelper;
 import me.kokeria.chatemotes.util.FileHandler;
 import net.minecraft.client.gui.GuiChat;
@@ -24,6 +25,13 @@ public class EventHandler {
         }
 
         return false;
+    }
+
+    protected  static boolean runAutocomplete(GuiChat chat) {
+
+        GuiTextField field = chat.inputField;
+        return AutoCompletion.autoComplete(field);
+
     }
 
 }
