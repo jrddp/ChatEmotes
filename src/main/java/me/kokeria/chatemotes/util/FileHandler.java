@@ -19,30 +19,26 @@ public class FileHandler {
     private static final Map<String, String> DEFAULT_KEYSET = new LinkedHashMap<>();
     static {
         DEFAULT_KEYSET.put("<3", "❤");
+        DEFAULT_KEYSET.put("o/", "( ﾟ◡ﾟ)/");
+        DEFAULT_KEYSET.put(":)", "◕‿◕");
         DEFAULT_KEYSET.put(":star:", "✮");
         DEFAULT_KEYSET.put(":yes:", "✔");
         DEFAULT_KEYSET.put(":no:", "✖");
         DEFAULT_KEYSET.put(":java:", "☕");
         DEFAULT_KEYSET.put(":arrow:", "➜");
-        DEFAULT_KEYSET.put(":shrug:", "¯\\_(ツ)_/¯");
-        DEFAULT_KEYSET.put(":tableflip:", "(╯°□°）╯︵ ┻━┻");
-        DEFAULT_KEYSET.put("o/", "( ﾟ◡ﾟ)/");
-//        DEFAULT_KEYSET.put(":123:", "123");
-        DEFAULT_KEYSET.put(":totem:", "☉_☉");
-        DEFAULT_KEYSET.put(":typing:", "✎...");
-        DEFAULT_KEYSET.put(":maths:", "√(π+x)=L");
-//        DEFAULT_KEYSET.put(":snail:", "@'-'");
-//        DEFAULT_KEYSET.put(":thinking:", "(0.o?)");
-        DEFAULT_KEYSET.put(":gimme:", "༼つ◕_◕༽つ");
-        DEFAULT_KEYSET.put(":wizard:", "('-')⊃━☆ﾟ.*･｡ﾟ");
         DEFAULT_KEYSET.put(":pvp:", "⚔");
         DEFAULT_KEYSET.put(":peace:", "✌");
-//        DEFAULT_KEYSET.put(":oof:", "OOF");
+        DEFAULT_KEYSET.put(":flower:", "✿");
+        DEFAULT_KEYSET.put(":typing:", "✎...");
+        DEFAULT_KEYSET.put(":maths:", "√(π+x)=L");
+        DEFAULT_KEYSET.put(":shrug:", "¯\\_(ツ)_/¯");
+        DEFAULT_KEYSET.put(":tableflip:", "(╯°□°）╯︵ ┻━┻");
+        DEFAULT_KEYSET.put(":totem:", "☉_☉");
+        DEFAULT_KEYSET.put(":gimme:", "༼つ◕_◕༽つ");
+        DEFAULT_KEYSET.put(":wizard:", "('-')⊃━☆ﾟ.*･｡ﾟ");
         DEFAULT_KEYSET.put(":run:", "ᕕ(՞ᗜ՞)ᕗ");
         DEFAULT_KEYSET.put(":bear:", "ʕ ᓀ ᴥ ᓂ ʔ");
-        DEFAULT_KEYSET.put(":flower:", "✿");
         DEFAULT_KEYSET.put(":rly:", "ಠ_ಠ");
-        DEFAULT_KEYSET.put(":)", "◕‿◕");
         DEFAULT_KEYSET.put(":dance:", "♪ ┗(^o^)┓ ♪");
     }
 
@@ -103,6 +99,8 @@ public class FileHandler {
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
+        } else {
+            genDefaultKeyfile();
         }
 
     }
