@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class FileHandler {
 
-    private static final File KEYFILE = new File("config" + File.separator + "chatemotes.txt");
+    public static final File KEYFILE = new File("config" + File.separator + "chatemotes.txt");
 
     private static final Map<String, String> EMOTES = new LinkedHashMap<>();
 
@@ -46,6 +46,13 @@ public class FileHandler {
         if (!KEYFILE.exists()) {
             try {
                 BufferedWriter writer = new BufferedWriter(new FileWriter(KEYFILE));
+
+                String comment = "# You can add a custom emote by using the format \"key:emote\".";
+                comment+="\n# You can then type the key in chat, surrounded by colons (:key:) and hit tab";
+                comment+="\n# To add a key that isn't surrounded by colons, put it in quotes (such as \"<3\":❤)\n" + System.getProperty("line.separator");
+
+                writer.write(comment);
+
                 Iterator<String> iterator = DEFAULT_KEYSET.keySet().iterator();
                 while (iterator.hasNext()) {
                     String key = iterator.next();
@@ -65,8 +72,12 @@ public class FileHandler {
             }
         }
     }
-        // todo add explanation to file
+
     public static void setEmotesFromFile() {
+        setEmotesFromFile(true);
+    }
+
+    public static void setEmotesFromFile(boolean doRecursion) {
 
         if (KEYFILE.exists()) {
             try {
@@ -74,7 +85,7 @@ public class FileHandler {
                 EMOTES.clear();
                 while (reader.hasNextLine()) {
                     String line = reader.nextLine();
-                    if (!line.contains(":")) continue;
+                    if (line.trim().startsWith("#") || !line.contains(":")) continue;
 
                     String key;
                     String repl;
@@ -99,8 +110,9 @@ public class FileHandler {
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-        } else {
+        } else if (doRecursion) {
             genDefaultKeyfile();
+            setEmotesFromFile(false);
         }
 
     }
