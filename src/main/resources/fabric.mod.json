@@ -3,14 +3,13 @@
   "id": "modid",
   "version": "${version}",
 
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "ChatEmotes",
+  "description": "",
   "authors": [
-    "Me!"
+    "Kokeria"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/chatemotes"
   },
 
   "license": "CC0-1.0",
@@ -18,12 +17,12 @@
 
   "environment": "*",
   "entrypoints": {
-    "main": [
-      "net.fabricmc.example.ExampleMod"
+    "client": [
+      "me.kokeria.chatemotes.ChatEmotes"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "chatemotes.mixins.json"
   ],
 
   "depends": {
@@ -33,5 +32,8 @@
   },
   "suggests": {
     "flamingo": "*"
+  },
+  "custom": {
+    "modmenu:clientsideOnly": true
   }
 }
