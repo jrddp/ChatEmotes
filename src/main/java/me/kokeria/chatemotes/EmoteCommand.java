@@ -12,6 +12,7 @@ import net.minecraft.util.Formatting;
 import java.util.Iterator;
 import java.util.Map;
 
+//FIXME command is only working on single player
 public class EmoteCommand {
 
     static void register(CommandDispatcher<ServerCommandSource> dispatcher) {
@@ -28,10 +29,7 @@ public class EmoteCommand {
         Iterator<String> iterator = emotes.keySet().iterator();
 
         if (!iterator.hasNext()) {
-            Style style = new Style().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_FILE, FileHandler.KEYFILE.getAbsolutePath()));
-            style.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new LiteralText("Click to open config file") {
-            }));
-            ChatHelper.addMsgToChat(new LiteralText(Formatting.RED + "You have no emotes registered!").setStyle(style));
+            ChatHelper.addMsgToChat(Formatting.RED + "You have no emotes registered!");
             return 1;
         }
 
