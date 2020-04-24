@@ -2,14 +2,14 @@
 {
   "modid": "chatemotes",
   "name": "ChatEmotes",
-  "description": "",
+  "description": "Adds customizable emotes to chat.\nType /emote to get a list of available emotes and keys\nType a key and hit tab to replace it with an emote\nEmotes and keys can be added and customize in chatemotes.txt in your config folder",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "url": "",
+  "url": "https://www.curseforge.com/minecraft/mc-mods/chatemotes",
   "updateUrl": "",
   "authorList": ["Kokeria"],
   "credits": "",
-  "logoFile": "",
+  "logoFile": "assets/logo.png",
   "screenshots": [],
   "dependencies": []
 }
