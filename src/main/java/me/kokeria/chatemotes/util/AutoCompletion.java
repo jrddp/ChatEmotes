@@ -17,10 +17,8 @@ public class AutoCompletion {
         if (!str.startsWith(":")) return false;
 
         List<String> keylist = new ArrayList<>(FileHandler.getEMOTES().keySet());
-        String[] args = {str};
 
-//        List<String> completions = CommandException.getListOfStringsMatchingLastWord(args, keylist);
-        List<String> completions = keylist;
+        List<String> completions = getListOfStringsMatchingWord(str, keylist);
 
         if (completions.size() == 1) {
             ChatHelper.replaceWord(field, completions.get(0));
@@ -33,6 +31,14 @@ public class AutoCompletion {
 
         return false;
 
+    }
+
+    static List<String> getListOfStringsMatchingWord(String word, List<String> strings) {
+        List<String> output = new ArrayList<>();
+        for (String s : strings) {
+            if (s.startsWith(word)) output.add(s);
+        }
+        return output;
     }
 
 }
