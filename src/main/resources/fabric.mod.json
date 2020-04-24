@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "chatemotes",
   "version": "${version}",
 
   "name": "ChatEmotes",
-  "description": "",
+  "description": "Adds customizable emotes to chat.\\nType /emote to get a list of available emotes and keys\\nType a key and hit tab to replace it with an emote\\nEmotes and keys can be added and customize in chatemotes.txt in your config folder",
   "authors": [
     "Kokeria"
   ],
@@ -13,7 +13,7 @@
   },
 
   "license": "CC0-1.0",
-  "icon": "assets/modid/icon.png",
+  "icon": "assets/chatemotes/icon.png",
 
   "environment": "*",
   "entrypoints": {
