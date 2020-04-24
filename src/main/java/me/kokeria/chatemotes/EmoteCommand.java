@@ -2,23 +2,22 @@ package me.kokeria.chatemotes;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
+import io.github.cottonmc.clientcommands.ArgumentBuilders;
+import io.github.cottonmc.clientcommands.ClientCommandPlugin;
+import io.github.cottonmc.clientcommands.CottonClientCommandSource;
 import me.kokeria.chatemotes.util.ChatHelper;
 import me.kokeria.chatemotes.util.FileHandler;
-import net.minecraft.server.command.CommandManager;
-import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.text.*;
 import net.minecraft.util.Formatting;
 
 import java.util.Iterator;
 import java.util.Map;
 
-//FIXME command is only working on single player
-public class EmoteCommand {
+public class EmoteCommand implements ClientCommandPlugin {
 
-    static void register(CommandDispatcher<ServerCommandSource> dispatcher) {
-
-        dispatcher.register(CommandManager.literal("emote").executes(EmoteCommand::execute));
-
+    @Override
+    public void registerCommands(CommandDispatcher<CottonClientCommandSource> commandDispatcher) {
+        commandDispatcher.register(ArgumentBuilders.literal("emote").executes(EmoteCommand::execute));
     }
 
     private static int execute(CommandContext<?> ctx) {

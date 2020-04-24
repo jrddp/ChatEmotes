@@ -19,7 +19,8 @@
   "entrypoints": {
     "client": [
       "me.kokeria.chatemotes.ChatEmotes"
-    ]
+    ],
+      "cotton-client-commands": ["me.kokeria.chatemotes.EmoteCommand"]
   },
   "mixins": [
     "chatemotes.mixins.json"
@@ -28,7 +29,8 @@
   "depends": {
     "fabricloader": ">=0.7.4",
     "fabric": "*",
-    "minecraft": "1.15.x"
+    "minecraft": "1.15.x",
+    "cotton-client-commands": "^1.0.0"
   },
   "suggests": {
     "flamingo": "*"

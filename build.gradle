@@ -34,7 +34,7 @@ dependencies {
 	modImplementation "io.github.prospector:modmenu:1.10.2+build.32"
 
 	// required for not having to need the mod on the server
-	modImplementation "io.github.cottonmc:cotton-client-commands:1.0.0+1.15.2"
+	modApi "io.github.cottonmc:cotton-client-commands:1.0.0+1.15.2"
 	include "io.github.cottonmc:cotton-client-commands:1.0.0+1.15.2"
 
 }
