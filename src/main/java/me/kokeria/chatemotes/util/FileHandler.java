@@ -80,10 +80,10 @@ public class FileHandler {
     }
 
     public static void setEmotesFromFile() {
-        setEmotesFromFile(true);
-    }
 
-    public static void setEmotesFromFile(boolean doRecursion) {
+        if (!KEYFILE.exists()) {
+            genDefaultKeyfile();
+        }
 
         if (KEYFILE.exists()) {
             try {
@@ -116,9 +116,6 @@ public class FileHandler {
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-        } else if (doRecursion) {
-            genDefaultKeyfile();
-            setEmotesFromFile(false);
         }
 
     }
