@@ -1,6 +1,7 @@
 package me.kokeria.chatemotes.util;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -21,6 +22,8 @@ public class FileHandler {
         DEFAULT_KEYSET.put("<3", "❤");
         DEFAULT_KEYSET.put("o/", "( ﾟ◡ﾟ)/");
         DEFAULT_KEYSET.put(":)", "◕‿◕");
+        DEFAULT_KEYSET.put("(:", "ಠ⌣ಠ");
+        DEFAULT_KEYSET.put(":(", "◉‸◉");
         DEFAULT_KEYSET.put(":star:", "✮");
         DEFAULT_KEYSET.put(":yes:", "✔");
         DEFAULT_KEYSET.put(":no:", "✖");
@@ -39,13 +42,16 @@ public class FileHandler {
         DEFAULT_KEYSET.put(":run:", "ᕕ(՞ᗜ՞)ᕗ");
         DEFAULT_KEYSET.put(":bear:", "ʕ ᓀ ᴥ ᓂ ʔ");
         DEFAULT_KEYSET.put(":rly:", "ಠ_ಠ");
+        DEFAULT_KEYSET.put(":cry:","ಥ_ಥ");
+        DEFAULT_KEYSET.put(":owo:", "◉﹏◉");
         DEFAULT_KEYSET.put(":dance:", "♪ ┗(^o^)┓ ♪");
+        DEFAULT_KEYSET.put(":danse:","♪ ┗(^o^)┓ ♪");
     }
 
     public static void genDefaultKeyfile() {
         if (!KEYFILE.exists()) {
             try {
-                BufferedWriter writer = new BufferedWriter(new FileWriter(KEYFILE));
+                BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(KEYFILE), StandardCharsets.UTF_8));
 
                 String comment = "# You can add a custom emote by using the format \"key:emote\".";
                 comment+="\n# You can then type the key in chat, surrounded by colons (:key:) and hit tab";
@@ -81,7 +87,7 @@ public class FileHandler {
 
         if (KEYFILE.exists()) {
             try {
-                Scanner reader = new Scanner(KEYFILE);
+                Scanner reader = new Scanner(KEYFILE, "UTF-8");
                 EMOTES.clear();
                 while (reader.hasNextLine()) {
                     String line = reader.nextLine();
