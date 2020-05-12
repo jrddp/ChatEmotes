@@ -44,7 +44,7 @@ public class FileHandler {
         DEFAULT_KEYSET.put(":rly:", "ಠ_ಠ");
         DEFAULT_KEYSET.put(":cry:","ಥ_ಥ");
         DEFAULT_KEYSET.put(":owo:", "◉﹏◉");
-        DEFAULT_KEYSET.put(":dance:", "♪ ┗(^o^)┓ ♪");
+        DEFAULT_KEYSET.put(":dance:", "♪ ┏(^o^)┛ ♪");
         DEFAULT_KEYSET.put(":danse:","♪ ┗(^o^)┓ ♪");
     }
 
